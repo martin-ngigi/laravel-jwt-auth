@@ -24,3 +24,12 @@ handling the token encryption, generate a secret key:
 
 Build Authentication Controller
     php artisan make:controller AuthController
+
+make a model and migrations as well.
+    php artisan make:model Post -m
+
+migrate
+    php artisan migrate
+
+create Post Controller and its api methods
+    php artisan make:controller PostController --api
