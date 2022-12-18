@@ -1,0 +1,90 @@
+1. POST
+Register
+endpoint -> http://127.0.0.1:8000/api/auth/register
+body:
+{
+    "name": "Martin Wainaina",
+    "email": "martinwainaina001@gmail.com",
+    "password": "123456",
+    "password_confirmation": "123456"
+}
+
+Response:
+{
+    "message": "User successfully registered",
+    "user": {
+        "name": "Martin Wainaina",
+        "email": "martinwainaina001@gmail.com",
+        "updated_at": "2022-12-18T06:51:45.000000Z",
+        "created_at": "2022-12-18T06:51:45.000000Z",
+        "id": 1
+    }
+}
+
+2.POST
+Login
+endpont -> http://127.0.0.1:8000/api/auth/login
+
+body:
+{
+    "email": "martinwainaina001@gmail.com",
+    "password": "123456"
+}
+
+
+response:
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NzEzNDY2MTQsImV4cCI6MTY3MTM1MDIxNCwibmJmIjoxNjcxMzQ2NjE0LCJqdGkiOiJFMVFZd2NvY010ejVKdkxUIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.rPIld6vK1JhTzcn_AhMT4rBpuSObo4vV-DWdG0R2hRI",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+        "id": 1,
+        "name": "Martin Wainaina",
+        "email": "martinwainaina001@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2022-12-18T06:51:45.000000Z",
+        "updated_at": "2022-12-18T06:51:45.000000Z"
+    }
+}
+
+3. POST -> Refresh
+In authorization, chose "Bearer Token" and paste the above access token. i.e. eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NzEzNDY2MTQsImV4cCI6MTY3MTM1MDIxNCwibmJmIjoxNjcxMzQ2NjE0LCJqdGkiOiJFMVFZd2NvY010ejVKdkxUIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.rPIld6vK1JhTzcn_AhMT4rBpuSObo4vV-DWdG0R2hRI
+
+response is :
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTY3MTM0NzA0MywiZXhwIjoxNjcxMzUwNjU5LCJuYmYiOjE2NzEzNDcwNTksImp0aSI6IlBObzNnRUIzckFtV1IwaU4iLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.PxUdlYUJthwsM_aBt-CeWtmMJ0rFZo3h3_4LWKvGWZ0",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+        "id": 1,
+        "name": "Martin Wainaina",
+        "email": "martinwainaina001@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2022-12-18T06:51:45.000000Z",
+        "updated_at": "2022-12-18T06:51:45.000000Z"
+    }
+}
+
+4. POST logout
+endpoints -> http://127.0.0.1:8000/api/auth/logout
+In authorization, chose "Bearer Token" and paste the above access token. i.e. eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NzEzNDY2MTQsImV4cCI6MTY3MTM1MDIxNCwibmJmIjoxNjcxMzQ2NjE0LCJqdGkiOiJFMVFZd2NvY010ejVKdkxUIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.rPIld6vK1JhTzcn_AhMT4rBpuSObo4vV-DWdG0R2hRI
+
+response:
+{
+    "message": "User successfully signed out"
+}
+
+5. GET -> Profile:
+endpoints-> http://127.0.0.1:8000/api/auth/user-profile
+In authorization, chose "Bearer Token" and paste the above access token. i.e. eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NzEzNDY2MTQsImV4cCI6MTY3MTM1MDIxNCwibmJmIjoxNjcxMzQ2NjE0LCJqdGkiOiJFMVFZd2NvY010ejVKdkxUIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.rPIld6vK1JhTzcn_AhMT4rBpuSObo4vV-DWdG0R2hRI
+response:
+{
+    "id": 1,
+    "name": "Martin Wainaina",
+    "email": "martinwainaina001@gmail.com",
+    "email_verified_at": null,
+    "created_at": "2022-12-18T06:51:45.000000Z",
+    "updated_at": "2022-12-18T06:51:45.000000Z"
+}
+
+

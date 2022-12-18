@@ -1,0 +1,26 @@
+LINK -> https://www.positronx.io/laravel-jwt-authentication-tutorial-user-login-signup-api/
+
+Install Laravel Application:
+	composer create-project laravel/laravel laravel-jwt-auth --prefer-dist
+
+//FOR MAMP ONLY.
+For handling laravel jwt custom authentication we are using MAMP, you might get the following migration error.
+Add the single line of code below the database configuration in the .env file:
+	DB_HOST=localhost;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock
+
+Add User into MySQL Database
+    php artisan migrate
+
+Install & Configure JWT Authentication Package
+    composer require tymon/jwt-auth --ignore-platform-reqs
+
+publish the package’s configuration:
+    php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+handling the token encryption, generate a secret key:
+    php artisan jwt:secret
+
+    the result is -------->>>>> jwt-auth secret [h9RFsb0rTcnK8AJNqla1QigK1l022ZxZn9WpryEAohmhvGuN9VvpJK6huLnfqH5u] set successfully.
+
+Build Authentication Controller
+    php artisan make:controller AuthController

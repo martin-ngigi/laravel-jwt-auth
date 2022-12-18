@@ -1,0 +1,81 @@
+Install Laravel -> Youtube Tutorial -> https://www.youtube.com/watch?v=9fC5zmvbDwU&list=PL8p2I9GklV47Jszga434vZxOmY74Q1N_K&index=2&ab_channel=CodeStepByStep
+Laravel API Tutorial -> https://www.youtube.com/watch?v=MT-GJQIY3EU&t=189s&ab_channel=TraversyMedia
+
+
+Installations:
+1. Install Xamp(once) - will also automatically install php
+2. Install Composer(once)
+3. Install laravel(once)
+4. Install Tabine AI autocompletion extension in VS
+
+Check php version:
+	php -v
+Check composer version:
+	composer --version
+Install laravel globally in cmd by running following command in cmd:
+	composer global require laravel/installer
+check laravel version:
+	laravel -v
+
+
+Create new Laravel project:
+	laravel new laravel-santum-api
+
+start Laravel's local development server using the Laravel's Artisan CLI serve command:
+	cd new laravel-santum-api
+	php artisan serve
+
+the web will be  visible at
+	http://127.0.0.1:8000/
+
+or after starting the xamp server, navigate to htdocs xamp and copy the relative path :
+http://localhost/LARAVEL/laravel-web/public/
+
+create a model
+    php artisan make:model Produc
+or
+create a model and a migration
+    php artisan make:model Product -m
+
+Making Controller run:
+    php artisan make:controller ProductController
+or
+Making Controller with api methods run: .............  "--api" will create associated methods in api such as create, update, delete
+    php artisan make:controller ProductController --api
+
+Checking all routes:
+ to check all routes, run in cmd:
+    php artisan route:list
+
+Making sanctum ... url https://laravel.com/docs/9.x/sanctum
+    composer require laravel/sanctum
+    php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+    php artisan migrate
+
+Making Controller run:
+    php artisan make:controller AuthController
+
+
+
+
+
+
+
+
+
+
+
+
+
+Making a component (its a piece of code that can be reused eg a header):
+    php artisan make:component header
+
+Making MiddleWare(is a piece of code that checks users request. eg at login).. Run:
+    php artisan make:middleware ageCheck
+
+
+Making Migrations... "employees" is table name
+    php artisan make:migration create_employees
+
+Migrating the migration
+    php artisan migrate
